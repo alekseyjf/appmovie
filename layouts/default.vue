@@ -94,7 +94,7 @@
         fixed: false,
         items: [
           { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
+          { icon: 'bubble_chart', title: 'Top-rated', to: '/top-rated' }
         ],
         miniVariant: false,
         right: true,

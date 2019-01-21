@@ -27,7 +27,7 @@
     },
     methods: {
       getBuyIdFilm(id) {
-        return this.$axios(id, {params: {'api_key': 'e1930df30bc3ae532084ae8399ac8913'}})
+        return this.$axios(id, {params: {'api_key': '46af676602ac73b3c91128ec65fec3eb'}})
         .then(
             (data) => {
               this.film = data
