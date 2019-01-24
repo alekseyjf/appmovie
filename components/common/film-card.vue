@@ -30,12 +30,7 @@
       return{
         imageUrl: 'https://image.tmdb.org/t/p/w500/'+this.isImage
       }
-    },
-    /*comuted: {
-      getImage(){
-        return ''
-      }
-    }*/
+    }
   }
 </script>
 

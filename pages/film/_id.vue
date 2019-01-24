@@ -13,15 +13,12 @@
               <h3 class="headline">{{film.original_title}}</h3>
               <div>{{film.overview}}</div>
               <br>
-              <p>Genres: {{getGenres}}
+              <p>Genres: <template v-for="(genre, i) in film.genres">
+                <nuxt-link class="genres-link" :to="'/genre/'+genre.id">{{genre.name}}</nuxt-link><template v-if="Object.keys(film.genres).length-1 !== i">, </template>
+              </template>
               </p>
             </div>
           </v-card-title>
-
-          <v-card-actions>
-            <v-btn flat color="orange">Share</v-btn>
-            <v-btn flat color="orange">Explore</v-btn>
-          </v-card-actions>
         </v-card>
       </v-flex>
     </v-layout>
@@ -53,7 +50,7 @@
 
     },
     mounted(){
-      // this.getGeners()
+      // this.getGenres()
     },
     methods: {
       getBuyIdFilm(id) {
@@ -72,13 +69,13 @@
 
     },
     computed: {
-      getGenres(){
+      /*getGenres(){
         let item = [];
         for(let n in this.film.genres){
           item.push(this.film.genres[n].name)
         }
         return item.join(', ')
-      }
+      }*/
     },
 
     validate({params}) {
@@ -89,5 +86,7 @@
 </script>
 
 <style scoped>
-
+  .genres-link{
+    color: #fff;
+  }
 </style>
