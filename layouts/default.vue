@@ -22,6 +22,14 @@
             <v-list-tile-title v-text="item.title" />
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile @click="logout">
+          <v-list-tile-action>
+            <v-icon v-html="items.logout" />
+          </v-list-tile-action>
+          <v-list-tile-content>
+            Logout
+          </v-list-tile-content>
+        </v-list-tile>
       </v-list>
     </v-navigation-drawer>
     <v-toolbar
@@ -94,12 +102,20 @@
         fixed: false,
         items: [
           { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Top-rated', to: '/top-rated' }
+          { icon: 'bubble_chart', title: 'Top-rated', to: '/top-rated' },
+          { icon: 'login', title: 'Log-in', to: '/login' }
         ],
         miniVariant: false,
         right: true,
         rightDrawer: false,
         title: 'Vuetify.js'
+      }
+    },
+    methods:{
+      logout(){
+        localStorage.removeItem('token');
+        this.$store.commit('setAuth', null)
+        //this.$axios.get('http://localhost:3000/logout')
       }
     }
   }

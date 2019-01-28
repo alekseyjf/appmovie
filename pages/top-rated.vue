@@ -11,6 +11,7 @@
   // discover/movie
   // https://api.themoviedb.org/3/movie
   export default {
+    middleware: 'notAuth',
     data(){
       return {
         list: '',
