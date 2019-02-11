@@ -22,6 +22,14 @@
             <v-list-tile-title v-text="item.title" />
           </v-list-tile-content>
         </v-list-tile>
+        <v-list-tile :to="login">
+          <v-list-tile-action>
+            <v-icon v-html="items.logout" />
+          </v-list-tile-action>
+          <v-list-tile-content>
+            Login
+          </v-list-tile-content>
+        </v-list-tile>
         <v-list-tile @click="logout">
           <v-list-tile-action>
             <v-icon v-html="items.logout" />

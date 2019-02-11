@@ -1,6 +1,8 @@
 export default function ({ store, redirect }) {
   // If the user is not authenticated
-  if (!store.state.auth) {
+  console.log('store.state.auth', store.state.auth);
+  //if (!store.state.auth) {
+  if (!localStorage.getItem('token')) {
     return redirect('/login')
   }
 }

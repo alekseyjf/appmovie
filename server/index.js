@@ -40,11 +40,11 @@ app.post('/api/sign-in', (req, res) => {
     email: 'asd@asd.com',
     pass: 'pass'
   };
-  /*if(
+  if(
       req.body.user==user.name
       && req.body.email==user.email
       && req.body.pass==user.pass
-  ){*/
+  ){
     jwt.sign({user: user}, 'secretkey', (err, token) => {
       if(err){
         res.sendStatus(403)
@@ -54,12 +54,12 @@ app.post('/api/sign-in', (req, res) => {
         })
       }
     })
-  /*} else {
+  } else {
     res.json({
       error: 'undefined',
       req: req.body.user
     })
-  }*/
+  }
 
   jwt.sign({user: user}, 'secretkey', (err, token) => {
     res.json({

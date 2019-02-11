@@ -19,14 +19,19 @@
 <script>
   export default {
     name: "login",
+    middleware: 'auth',
     data(){
       return{
         //token: '',
+
         user: '',
         email: '',
         pass: '',
         error: null
       }
+    },
+    computed:{
+
     },
     methods: {
       getLogin(){
@@ -39,7 +44,8 @@
           .then((data) => {
             if(data.data.token){
               this.$store.commit('setAuth', data.data.token)
-              localStorage.token = data.data.token;
+              //localStorage.token = data.data.token;
+              localStorage.setItem('token', data.data.token);
               $nuxt.$router.push('/')
             } else {
               this.error = true

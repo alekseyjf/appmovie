@@ -13,17 +13,7 @@ const createStore = () => {
         state.auth = auth
       }
     },
-    actions: {
-      nuxtServerInit({commit},{req}){
-        let auth = null
-
-        console.log('localStorage.token', localStorage.token);
-        auth = localStorage.token
-        console.log(req);
-
-        commit('setAuth', auth)
-      }
-    }
+    actions: {}
   })
 }
 
