@@ -1,7 +1,7 @@
 <template>
 
   <v-container grid-list-md text-xs-center>
-    <button @click="getToken">CLICK ME</button>
+    <!--<button @click="getToken">CLICK ME</button>-->
     <pre>{{dataToken}}</pre>
     <v-layout row wrap>
       <v-flex v-for="n in list" v-bind:key="n.id" xs4>
@@ -44,13 +44,13 @@
         })
         .catch( error => this.error = error)
       },
-      getToken(){
+      /*getToken(){
         return this.$axios.post('http://localhost:3000/api/posts')
         .then((data) => {
           console.log(data);
           this.dataToken = data.data.token
         })
-      },
+      },*/
     },
     components: {
       FilmCard: () => import ('../components/common/film-card')

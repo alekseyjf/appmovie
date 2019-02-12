@@ -40,7 +40,7 @@
           email: this.email,
           pass: this.pass
         };
-        this.$axios.post('http://localhost:3000/api/sign-in', user)
+        this.$axios.post('http://localhost:8080/api/sign-in', user)
           .then((data) => {
             if(data.data.token){
               this.$store.commit('setAuth', data.data.token)

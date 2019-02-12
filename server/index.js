@@ -1,11 +1,20 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const consola = require('consola')
-const { Nuxt, Builder } = require('nuxt')
-const app = express()
+const consola = require('consola');
+const { Nuxt, Builder } = require('nuxt');
+const app = express();
 const bodyParser = require('body-parser');
-const host = process.env.HOST || '127.0.0.1'
-const port = process.env.PORT || 3000
+const host = process.env.HOST || '127.0.0.1';
+const port = process.env.PORT || 8080;
+const session = require('express-session');
+
+// init session
+app.use(session({
+  secret: 'PFYTE*^Hh*&%7RE6w7n&^RGF&^FT867erg57(',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false, expires: new Date(Date.now() + 60*60*1000) }
+}));
 
 app.use(bodyParser.json());
 

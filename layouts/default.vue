@@ -22,17 +22,17 @@
             <v-list-tile-title v-text="item.title" />
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile :to="login">
+        <v-list-tile :to="'/login'" v-if="!getToken">
           <v-list-tile-action>
-            <v-icon v-html="items.logout" />
+            <!--<v-icon v-html="items.login" />-->
           </v-list-tile-action>
           <v-list-tile-content>
-            Login
+            Log-in
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="logout">
+        <v-list-tile @click="logout" v-if="getToken">
           <v-list-tile-action>
-            <v-icon v-html="items.logout" />
+            <!--<v-icon v-html="items.logout" />-->
           </v-list-tile-action>
           <v-list-tile-content>
             Logout
@@ -111,18 +111,32 @@
         items: [
           { icon: 'apps', title: 'Welcome', to: '/' },
           { icon: 'bubble_chart', title: 'Top-rated', to: '/top-rated' },
-          { icon: 'login', title: 'Log-in', to: '/login' }
+          //{ icon: 'login', title: 'Log-in', to: '/login' }
         ],
         miniVariant: false,
         right: true,
         rightDrawer: false,
-        title: 'Vuetify.js'
+        title: 'Vuetify.js',
+        token: ''
+      }
+    },
+    updated: function () {
+      this.$nextTick(function () {
+        // Код, который будет запущен только после
+        // обновления всех представлений
+      })
+    },
+    computed: {
+      getToken(){
+        //console.log(!!localStorage.getItem('token'));
+        return this.$store.commit('setAuth')
       }
     },
     methods:{
       logout(){
         localStorage.removeItem('token');
-        this.$store.commit('setAuth', null)
+        this.$store.commit('setAuth', null);
+        $nuxt.$router.push('/')
         //this.$axios.get('http://localhost:3000/logout')
       }
     }
