@@ -3,6 +3,7 @@
   <v-container grid-list-md text-xs-center>
     <!--<button @click="getToken">CLICK ME</button>-->
     <pre>{{dataToken}}</pre>
+    <pre>{{$store.state.auth}}</pre>
     <v-layout row wrap>
       <v-flex v-for="n in list" v-bind:key="n.id" xs4>
         <film-card :body="n.overview" :title="n.title" :isImage="n.backdrop_path" :filmId="n.id"/>
@@ -14,6 +15,7 @@
 
 <script>
   //https://api.themoviedb.org/3/movie/popular?api_key=e1930df30bc3ae532084ae8399ac8913&language=en-US&page=1
+
   import {mapState} from 'vuex';
   export default {
     data(){

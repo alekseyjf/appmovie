@@ -21,8 +21,10 @@ app.use(bodyParser.json());
 app.set('port', port);
 
 app.get('/api', (req, res) => {
+  req.session.token = 'token';
   res.json({
-    message: 'welcome api'
+    message: 'welcome api',
+    session: req.session
   })
 });
 app.post('/api/posts', verifyToken, (req, res) => {
@@ -55,11 +57,12 @@ app.post('/api/sign-in', (req, res) => {
       && req.body.pass==user.pass
   ){
     jwt.sign({user: user}, 'secretkey', (err, token) => {
+      req.session.token = token;
       if(err){
         res.sendStatus(403)
       } else {
         res.json({
-          token: token
+          token: req.session.token
         })
       }
     })

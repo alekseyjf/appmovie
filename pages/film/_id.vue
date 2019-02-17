@@ -14,7 +14,7 @@
               <div>{{film.overview}}</div>
               <br>
               <p>Genres: <template v-for="(genre, i) in film.genres">
-                <nuxt-link class="genres-link" :to="'/genre/'+genre.id">{{genre.name}}</nuxt-link><template v-if="Object.keys(film.genres).length-1 !== i">, </template>
+                <nuxt-link class= "genres-link" :to="'/genre/'+genre.id">{{genre.name}}</nuxt-link><template v-if="Object.keys(film.genres).length-1 !== i">, </template>
               </template>
               </p>
             </div>
