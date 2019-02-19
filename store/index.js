@@ -6,8 +6,7 @@ Vue.use('Vuex');
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      auth: null,
-      token: null
+      auth: null
     },
     mutations: {
       SET_AUTH(state, auth) {
@@ -22,11 +21,12 @@ const createStore = () => {
     actions: {
       // nuxtServerInit is called by Nuxt.js before server-rendering every page
       async nuxtServerInit({commit, state, dispatch}, {req, res}) {
-        //console.log('req.session', req.session.token);
+        console.log('req.session', req.session.token);
         try {
           if (req.session.token) {
             let {token} = req.session.token;
-            await commit('SET_TOKEN', token);
+            console.log('token', token);
+            await commit('SET_AUTH', token);
           }
         } catch (error) {
           console.log(error);

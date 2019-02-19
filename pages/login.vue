@@ -44,8 +44,6 @@
           .then((data) => {
             if(data.data.token){
               this.$store.commit('SET_AUTH', data.data.token)
-              //localStorage.token = data.data.token;
-              localStorage.setItem('token', data.data.token);
               $nuxt.$router.push('/')
             } else {
               this.error = true

@@ -25,13 +25,7 @@
     },
     methods: {
       getMovie(){
-
-        let params = new URLSearchParams();
-        params.set('api_key', this.api_key);
-        params.set('language', 'ru-RU');
-        params.set('page', '1');
-
-        return this.$axios.get(`${this.category}`, {params: params})
+        return this.$axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=46af676602ac73b3c91128ec65fec3eb&language=en-US&page=1')
         .then((data) => {
           console.log('data', data.data );
           this.list = data.data.results

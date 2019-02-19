@@ -128,16 +128,13 @@
     },
     computed: {
       getToken(){
-        //console.log(!!localStorage.getItem('token'));
         return this.$store.commit('SET_AUTH')
       }
     },
     methods:{
       logout(){
-        localStorage.removeItem('token');
         this.$store.commit('SET_AUTH', null);
         $nuxt.$router.push('/')
-        //this.$axios.get('http://localhost:3000/logout')
       }
     }
   }
