@@ -26,6 +26,7 @@ app.get('/api', (req, res) => {
     message: 'welcome api',
     session: req.session
   })
+
 });
 app.post('/api/posts', verifyToken, (req, res) => {
   jwt.verify(req.token, 'secretkey', (err, authData) => {
@@ -65,6 +66,8 @@ app.post('/api/sign-in', (req, res) => {
           token: req.session.token
         })
       }
+
+      console.log(req.session);
     })
   } else {
     res.json({
