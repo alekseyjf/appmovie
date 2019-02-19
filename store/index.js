@@ -15,8 +15,6 @@ const createStore = () => {
       SET_TOKEN: function(state, token) {
         token !== undefined ? state.token = token : null;
       },
--
-
     },
     actions: {
       // nuxtServerInit is called by Nuxt.js before server-rendering every page
