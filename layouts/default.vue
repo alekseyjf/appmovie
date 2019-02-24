@@ -128,12 +128,13 @@
     },
     computed: {
       getToken(){
-        return this.$store.commit('SET_AUTH')
+        console.log('this.$store.getters.retToken', !!this.$store.getters.retToken);
+        return this.$store.getters.retToken
       }
     },
     methods:{
       logout(){
-        this.$store.commit('SET_AUTH', null);
+        this.$store.commit('SET_TOKEN', null);
         $nuxt.$router.push('/')
       }
     }

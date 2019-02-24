@@ -6,7 +6,8 @@ Vue.use('Vuex');
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      auth: null
+      auth: null,
+      token: null
     },
     mutations: {
       SET_AUTH(state, auth) {
@@ -23,10 +24,15 @@ const createStore = () => {
 
         let {token} = req.session;
 
-        commit('SET_AUTH', token);
+        commit('SET_TOKEN', token);
 
       },
 
+    },
+    getters:{
+      retToken(state){
+        return state.token
+      }
     }
   })
 }

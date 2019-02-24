@@ -8,8 +8,8 @@
 
       <v-card-title primary-title>
         <div>
-          <h3 class="headline mb-12">{{title}} title</h3>
-          <div>{{desc}} text</div>
+          <h3 class="headline mb-12">{{title}}</h3>
+          <div>{{desc}}</div>
         </div>
       </v-card-title>
 

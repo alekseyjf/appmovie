@@ -43,8 +43,8 @@
         this.$axios.post('http://localhost:8080/api/sign-in', user)
           .then((data) => {
             if(data.data.token){
-              this.$store.commit('SET_AUTH', data.data.token)
-              $nuxt.$router.push('/')
+              this.$store.commit('SET_TOKEN', data.data.token)
+              this.$router.push('/')
             } else {
               this.error = true
             }
