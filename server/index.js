@@ -1,7 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const consola = require('consola');
-const { Nuxt, Builder } = require('nuxt');
+const {Nuxt, Builder} = require('nuxt');
 const app = express();
 const bodyParser = require('body-parser');
 const host = process.env.HOST || '127.0.0.1';
@@ -13,7 +13,7 @@ app.use(session({
   secret: 'PFYTE*^Hh*&%7RE6w7n&^RGF&^FT867erg57(',
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false, expires: new Date(Date.now() + 60*60*1000) }
+  cookie: {secure: false, expires: new Date(Date.now() + 60 * 60 * 1000)}
 }));
 
 app.use(bodyParser.json());
@@ -31,7 +31,7 @@ app.get('/api', (req, res) => {
 app.post('/api/posts', verifyToken, (req, res) => {
   jwt.verify(req.token, 'secretkey', (err, authData) => {
     console.log('authData', authData);
-    if(err){
+    if (err) {
       res.sendStatus(403)
     } else {
       res.json({
@@ -40,60 +40,68 @@ app.post('/api/posts', verifyToken, (req, res) => {
       })
     }
   })
-
-
 });
-app.post('/api/sign-in', (req, res) => {
-  // mock user
-  // console.log(req.body);
-  const user = {
+
+//default users
+const users = [
+  {
     id: 1,
     name: 'Alex',
     email: 'asd@asd.com',
     pass: 'pass'
-  };
-  if(
-      req.body.user==user.name
-      && req.body.email==user.email
-      && req.body.pass==user.pass
-  ){
-    jwt.sign({user: user}, 'secretkey', (err, token) => {
+  }
+];
+
+app.post('/api/sign-up', (req, res) => {
+  if(req.body.email){
+    users.push(req.body);
+    console.log(users);
+    res.json({
+      user: true
+    })
+  }
+});
+app.post('/api/sign-in', (req, res) => {
+
+  let count = null;
+  for(let i=0; i< users.length; i++){
+    if(users[i].email == req.body.email && users[i].pass == req.body.pass){
+      count = i;
+    }
+  }
+  console.log('users[count]', users[count]);
+  if (
+      req.body.name == users[count].name
+      && req.body.email == users[count].email
+      && req.body.pass == users[count].pass
+  ) {
+    jwt.sign({user: users[count]}, 'secretkey', (err, token) => {
       req.session.token = token;
-      if(err){
+      if (err) {
         res.sendStatus(403)
       } else {
         res.json({
           token: req.session.token
         })
       }
-
-      console.log(req.session);
+      //console.log(req.session);
     })
   } else {
     res.json({
       error: 'undefined',
-      req: req.body.user
+      //req: req.body.name
     })
   }
 
-  jwt.sign({user: user}, 'secretkey', (err, token) => {
-    res.json({
-      token: token
-    })
-  })
 });
 
-/*app.get('/logout', (req, res)=>{
-
-});*/
-
 // verify token
-function verifyToken(req, res, next){
+function verifyToken(req, res, next) {
   // get auth header value
   const bearerHeader = req.headers['authorization'];
   // check if bearer is undefined
 
-  if(typeof bearerHeader !== 'undefined'){
+  if (typeof bearerHeader !== 'undefined') {
     const bearer = bearerHeader.split(' ');
     console.log('bearer', bearer);
     const bearerToken = bearer[1];
@@ -131,4 +139,5 @@ async function start() {
     badge: true
   })
 }
+
 start()

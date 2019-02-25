@@ -6,7 +6,7 @@
       pass: pass
     </pre>
     <form style="margin: 50px;" @submit.prevent="getLogin">
-      <input type="text" name="user" v-model="user">
+      <input type="text" name="name" v-model="name">
       <input type="text" name="email" v-model="email">
       <input type="password" name="pass" v-model="pass">
       <input type="submit" value="submit">
@@ -18,13 +18,13 @@
 
 <script>
   export default {
-    name: "login",
+    name: "sign-in",
     middleware: 'auth',
     data(){
       return{
         //token: '',
 
-        user: 'Alex',
+        name: 'Alex',
         email: 'asd@asd.com',
         pass: 'pass',
         error: null
@@ -36,7 +36,7 @@
     methods: {
       getLogin(){
         let user = {
-          user: this.user,
+          name: this.name,
           email: this.email,
           pass: this.pass
         };
@@ -49,9 +49,9 @@
               this.error = true
             }
           })
-        .catch(error => {
-          console.log(error);
-        })
+          .catch(error => {
+            console.log(error);
+          })
       }
     }
   }

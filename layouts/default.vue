@@ -22,12 +22,20 @@
             <v-list-tile-title v-text="item.title" />
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile :to="'/login'" v-if="!getToken">
+        <v-list-tile :to="'/sign-in'" v-if="!getToken">
           <v-list-tile-action>
             <!--<v-icon v-html="items.login" />-->
           </v-list-tile-action>
           <v-list-tile-content>
-            Log-in
+            Sign-in
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-list-tile :to="'/sign-up'" v-if="!getToken">
+          <v-list-tile-action>
+            <!--<v-icon v-html="items.login" />-->
+          </v-list-tile-action>
+          <v-list-tile-content>
+            Sign-up
           </v-list-tile-content>
         </v-list-tile>
         <v-list-tile @click="logout" v-if="getToken">

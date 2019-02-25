@@ -3,6 +3,6 @@ export default function ({ store, redirect }) {
   console.log('store.state.auth', store.state.auth);
   if (!store.state.token) {
   //if (!localStorage.getItem('token')) {
-    return redirect('/login')
+    return redirect('/sign-in')
   }
 }
