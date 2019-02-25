@@ -95,6 +95,10 @@ app.post('/api/sign-in', (req, res) => {
 
 });
 
+app.get('/api/logout', (req, res) => {
+  req.session.destroy();
+})
+
 // verify token
 function verifyToken(req, res, next) {
   // get auth header value

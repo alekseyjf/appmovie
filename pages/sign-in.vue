@@ -1,6 +1,7 @@
 <template>
   <div>
     <pre>
+      default user
       name: Alex
       email: asd@asd.com
       pass: pass
@@ -24,9 +25,9 @@
       return{
         //token: '',
 
-        name: 'Alex',
-        email: 'asd@asd.com',
-        pass: 'pass',
+        name: '',
+        email: '',
+        pass: '',
         error: null
       }
     },

@@ -142,6 +142,13 @@
     },
     methods:{
       logout(){
+        this.$axios.get('http://localhost:8080/api/sign-in')
+          .then(data=>{
+            console.log(data);
+          })
+          .catch(error => {
+            console.log(error);
+          })
         this.$store.commit('SET_TOKEN', null);
         $nuxt.$router.push('/')
       }
