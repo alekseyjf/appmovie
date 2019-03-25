@@ -25,9 +25,9 @@
       return{
         //token: '',
 
-        name: '',
-        email: '',
-        pass: '',
+        name: 'Alex',
+        email: 'asd@asd.com',
+        pass: 'pass',
         error: null
       }
     },

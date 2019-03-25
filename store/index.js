@@ -14,13 +14,19 @@ const createStore = () => {
         state.auth = auth
       },
       SET_TOKEN: function(state, token) {
-        token !== undefined ? state.token = token : null;
+        console.log('mutation', token);
+        token != undefined ? state.token = token : state.token = null;
       },
     },
     actions: {
+      setToken({commit}, token) {
+        console.log('action', token);
+        commit('SET_TOKEN', token)
+      },
       // nuxtServerInit is called by Nuxt.js before server-rendering every page
+
       nuxtServerInit({commit, state, dispatch}, {req, res}) {
-        console.log('req.session', req.session);
+        //console.log('req.session', req.session);
 
         let {token} = req.session;
 

@@ -30,7 +30,7 @@ app.get('/api', (req, res) => {
 });
 app.post('/api/posts', verifyToken, (req, res) => {
   jwt.verify(req.token, 'secretkey', (err, authData) => {
-    console.log('authData', authData);
+    //console.log('authData', authData);
     if (err) {
       res.sendStatus(403)
     } else {
@@ -55,7 +55,7 @@ const users = [
 app.post('/api/sign-up', (req, res) => {
   if(req.body.email){
     users.push(req.body);
-    console.log(users);
+    //console.log(users);
     res.json({
       user: true
     })
@@ -64,12 +64,18 @@ app.post('/api/sign-up', (req, res) => {
 app.post('/api/sign-in', (req, res) => {
 
   let count = null;
+  //console.log(req.body);
+  //console.log(users);
   for(let i=0; i< users.length; i++){
+    //console.log(users[i].email == req.body.email);
+    //console.log(users[i].pass == req.body.pass);
     if(users[i].email == req.body.email && users[i].pass == req.body.pass){
+      //console.log(users);
+      //console.log(i);
       count = i;
     }
   }
-  console.log('users[count]', users[count]);
+  //console.log('users[count]', users[count]);
   if (
       req.body.name == users[count].name
       && req.body.email == users[count].email
@@ -95,7 +101,7 @@ app.post('/api/sign-in', (req, res) => {
 
 });
 
-app.get('/api/logout', (req, res) => {
+app.get('/logout', (req, res) => {
   req.session.destroy();
 })
 
@@ -107,9 +113,9 @@ function verifyToken(req, res, next) {
 
   if (typeof bearerHeader !== 'undefined') {
     const bearer = bearerHeader.split(' ');
-    console.log('bearer', bearer);
+    //console.log('bearer', bearer);
     const bearerToken = bearer[1];
-    console.log('bearerToken', bearerToken);
+    //console.log('bearerToken', bearerToken);
     req.token = bearerToken;
 
     next();

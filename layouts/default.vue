@@ -142,14 +142,15 @@
     },
     methods:{
       logout(){
-        this.$axios.get('http://localhost:8080/api/sign-in')
+        this.$axios.get('http://localhost:8080/logout')
           .then(data=>{
             console.log(data);
           })
           .catch(error => {
             console.log(error);
           })
-        this.$store.commit('SET_TOKEN', null);
+        // this.$store.commit('SET_TOKEN', null);
+        this.$store.dispatch('setToken', null);
         $nuxt.$router.push('/')
       }
     }
