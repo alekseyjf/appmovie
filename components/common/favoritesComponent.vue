@@ -27,16 +27,14 @@
 
 <script>
   export default {
-    name: "top_rated",
+    name: 'favoritesComponent',
     data() {
       return {
-        imageUrl: 'https://image.tmdb.org/t/p/w500/'+this.isImage
+
       }
     },
-    props: ['title', 'desc', 'filmId', 'isImage']
+    computed: {
+
+    }
   }
 </script>
-
-<style scoped>
-
-</style>

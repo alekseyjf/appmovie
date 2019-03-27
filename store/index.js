@@ -7,7 +7,8 @@ const createStore = () => {
   return new Vuex.Store({
     state: {
       auth: null,
-      token: null
+      token: null,
+      favoritesList: null,
     },
     mutations: {
       SET_AUTH(state, auth) {
