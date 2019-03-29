@@ -17,9 +17,9 @@
 
       <v-card-actions justify-center row>
         <nuxt-link :to="'film/'+filmId">
-          <v-btn  flat>detail</v-btn>
+          <v-btn flat>detail</v-btn>
         </nuxt-link>
-        <v-btn color="primary">add favorites</v-btn>
+        <v-btn color="primary" @click="addFavorite">add favorites</v-btn>
       </v-card-actions>
     </v-card>
   </v-flex>
@@ -33,7 +33,12 @@
         imageUrl: 'https://image.tmdb.org/t/p/w500/'+this.isImage
       }
     },
-    props: ['title', 'desc', 'filmId', 'isImage']
+    props: ['title', 'desc', 'filmId', 'isImage'],
+    method: {
+      addFavotite() {
+
+      }
+    }
   }
 </script>
 

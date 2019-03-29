@@ -8,7 +8,7 @@ const createStore = () => {
     state: {
       auth: null,
       token: null,
-      favoritesList: null,
+      favoritesList: [ ],
     },
     mutations: {
       SET_AUTH(state, auth) {
@@ -39,6 +39,9 @@ const createStore = () => {
     getters:{
       retToken(state){
         return state.token
+      },
+      retFavoritesList(state) {
+        return state.favoritesList
       }
     }
   })

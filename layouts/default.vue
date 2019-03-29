@@ -119,7 +119,7 @@
         items: [
           { icon: 'apps', title: 'Welcome', to: '/' },
           { icon: 'bubble_chart', title: 'Top-rated', to: '/top-rated' },
-          //{ icon: 'login', title: 'Log-in', to: '/login' }
+          { icon: 'favorite', title: 'Favorites', to: '/favorites' }
         ],
         miniVariant: false,
         right: true,
