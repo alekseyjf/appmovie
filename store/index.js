@@ -11,6 +11,9 @@ const createStore = () => {
       favoritesList: [ ],
     },
     mutations: {
+      mutFavorite(state, filmId) {
+        state.favoritesList.push(filmId)
+      },
       SET_AUTH(state, auth) {
         state.auth = auth
       },
@@ -20,6 +23,9 @@ const createStore = () => {
       },
     },
     actions: {
+      setFavorite({commit}, filmId) {
+        commit('mutFavorite', filmId)
+      },
       setToken({commit}, token) {
         console.log('action', token);
         commit('SET_TOKEN', token)

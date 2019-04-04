@@ -34,9 +34,11 @@
       }
     },
     props: ['title', 'desc', 'filmId', 'isImage'],
-    method: {
-      addFavotite() {
-
+    methods: {
+      addFavorite() {
+        console.log(this.filmId);
+        this.$store.dispatch('setFavorite', this.filmId)
+        console.log('this.$store.getters.retFavoritesList', this.$store.getters.retFavoritesList);
       }
     }
   }
