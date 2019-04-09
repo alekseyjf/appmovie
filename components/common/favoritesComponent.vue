@@ -2,10 +2,10 @@
   <v-flex xs12>
     <v-card>
       <nuxt-link :to="'film/'+filmId">
-        <!--<v-img
+        <v-img
             :src="imageUrl"
             aspect-ratio="2.75"
-        ></v-img>-->
+        ></v-img>
       </nuxt-link>
 
       <v-card-title primary-title>
@@ -16,10 +16,10 @@
       </v-card-title>
 
       <v-card-actions justify-center row>
-        <!--<nuxt-link :to="'film/'+filmId">
+        <nuxt-link :to="'film/'+filmId">
           <v-btn  flat>detail</v-btn>
         </nuxt-link>
-        <v-btn color="primary">add favorites</v-btn>-->
+        <v-btn color="primary">add favorites</v-btn>
       </v-card-actions>
     </v-card>
   </v-flex>
@@ -30,7 +30,7 @@
     name: 'favoritesComponent',
     data() {
       return {
-
+        imageUrl: 'https://image.tmdb.org/t/p/w500/'+this.isImage
       }
     },
     props: ['title', 'desc', 'filmId', 'isImage'],
@@ -41,30 +41,9 @@
       }
     },
     created() {
-      this.getApi()
     },
     methods: {
-      getApi() {
-        console.log('this.$store.getters.retFavoritesList.length', this.$store.getters.retFavoritesList.length);
-        this.$store.getters.retFavoritesList.forEach((item, i, arr)=>{
-          console.log(item);
-          console.log(i);
-          /*this.$axios.get(`https://api.themoviedb.org/3/movie/${this.$store.getters.retFavoritesList[i]}?api_key=46af676602ac73b3c91128ec65fec3eb&language=en-US`)
-          .then((data)=>{
-            console.log(data,i);
-          }).catch(error=>{
-            console.log('error' ,error);
-          })*/
-        })
-        for(let i=0; i < this.$store.getters.retFavoritesList.length - 1; i++){
-          /*this.$axios.get(`https://api.themoviedb.org/3/movie/${this.$store.getters.retFavoritesList[i]}?api_key=46af676602ac73b3c91128ec65fec3eb&language=en-US`)
-          .then((data)=>{
-            console.log(data,i);
-          }).catch(error=>{
-            console.log('error' ,error);
-          })*/
-        }
-      }
+
     }
   }
 </script>

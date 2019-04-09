@@ -13,16 +13,37 @@
   export default {
     data() {
       return {
-
+        getFovorites: []
       }
     },
     computed: {
-      getFovorites() {
+      /*getFovorites() {
         return this.$store.getters.retFavoritesList
-      }
+      }*/
 
     },
     //middleware: 'notAuth',
+    created() {
+      this.getApi();
+    },
+    methods: {
+      getApi() {
+        console.log('this.$store.getters.retFavoritesList.length', this.$store.getters.retFavoritesList.length);
+        this.$store.getters.retFavoritesList.forEach((item, i, arr)=>{
+          console.log(item);
+          console.log(i);
+          this.$axios.get(`https://api.themoviedb.org/3/movie/${item}?api_key=46af676602ac73b3c91128ec65fec3eb&language=en-US`)
+          .then((data)=>{
+            console.log(data,i);
+            this.getFovorites.push(data.data);
+            console.log(this.getFovorites);
+          }).catch(error=>{
+            console.log('error' ,error);
+          })
+        })
+
+      }
+    },
     components: {
       FavoritesComponent: ()=> import ('../components/common/favoritesComponent')
     }
