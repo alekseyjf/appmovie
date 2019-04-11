@@ -19,7 +19,7 @@
         <nuxt-link :to="'film/'+filmId">
           <v-btn  flat>detail</v-btn>
         </nuxt-link>
-        <v-btn color="primary">add favorites</v-btn>
+        <v-btn color="primary" @click="removeFavorite">add favorites</v-btn>
       </v-card-actions>
     </v-card>
   </v-flex>
@@ -43,7 +43,9 @@
     created() {
     },
     methods: {
-
+      removeFavorite() {
+        // this.$store
+      }
     }
   }
 </script>

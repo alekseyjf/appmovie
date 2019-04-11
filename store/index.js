@@ -14,6 +14,11 @@ const createStore = () => {
       mutFavorite(state, filmId) {
         state.favoritesList.push(filmId)
       },
+      rmFavorite(state, flmId) {
+        for(let i=0; i < state.favoritesList.length; i++) {
+
+        }
+      },
       SET_AUTH(state, auth) {
         state.auth = auth
       },
@@ -31,6 +36,9 @@ const createStore = () => {
         commit('SET_TOKEN', token)
       },
       // nuxtServerInit is called by Nuxt.js before server-rendering every page
+      removeFavorite({commit}, filmId) {
+        commit('rmFavorite', filmId)
+      },
 
       nuxtServerInit({commit, state, dispatch}, {req, res}) {
         //console.log('req.session', req.session);
