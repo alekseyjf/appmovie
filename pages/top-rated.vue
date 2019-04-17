@@ -27,7 +27,6 @@
       getMovie(){
         return this.$axios.get('https://api.themoviedb.org/3/movie/top_rated?api_key=46af676602ac73b3c91128ec65fec3eb&language=en-US&page=1')
         .then((data) => {
-          console.log('data', data.data );
           this.list = data.data.results
         })
         .catch( error => this.error = error)

@@ -36,22 +36,30 @@
       }
     },
     props: ['title', 'desc', 'filmId', 'isImage'],
+    created(){
+      this.checkOnFavorites();
+    },
+
     methods: {
       addFavorite() {
-        console.log(this.filmId);
-        this.$store.dispatch('setFavorite', this.filmId)
-        console.log('this.$store.getters.retFavoritesList', this.$store.getters.retFavoritesList);
+        this.$store.dispatch('setFavorite', this.filmId);
+
         this.flag = !this.flag;
+        console.log('this.$store.getters.retFavoritesList', this.$store.getters.retFavoritesList);
       },
       removeFavorite() {
-        console.log(this.filmId);
-        console.log(this.$store.getters.retFavoritesList.length);
-        this.flag = !this.flag;
         for(let i=0; i < this.$store.getters.retFavoritesList.length; i++) {
-          console.log(this.$store.getters.retFavoritesList[i],  this.filmId);
-          if(this.$store.getters.retFavoritesList[i] == this.filmId) {
-
-            console.log('this.filmId', this.filmId);
+          if(this.$store.getters.retFavoritesList[i].id == this.filmId) {
+            this.flag = !this.flag;
+            this.$store.dispatch('removeFavorite', i);
+            return
+          }
+        }
+      },
+      checkOnFavorites() {
+        for(let i=0; i < this.$store.getters.retFavoritesList.length; i++) {
+          if(this.$store.getters.retFavoritesList[i].id == this.filmId) {
+            this.flag = !this.flag;
           }
         }
       }
