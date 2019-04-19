@@ -36,7 +36,6 @@
     props: ['title', 'desc', 'filmId', 'isImage'],
     computed: {
       getList(){
-        //console.log('store.getters.retFavoritesList', this.$store.getters.retFavoritesList);
         return this.$store.getters.retFavoritesList;
       }
     },

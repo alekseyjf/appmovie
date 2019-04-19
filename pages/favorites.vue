@@ -16,23 +16,7 @@
       }
     },
     // computed: {},
-    //middleware: 'notAuth',
-    created() {
-      //this.getApi();
-    },
-    methods: {
-      /*getApi() {
-        this.$store.getters.retFavoritesList.forEach((item, i, arr)=>{
-          this.$axios.get(`https://api.themoviedb.org/3/movie/${item}?api_key=46af676602ac73b3c91128ec65fec3eb&language=en-US`)
-          .then((data)=>{
-            this.getFovorites.push(data.data);
-          }).catch(error=>{
-            console.log('error' ,error);
-          })
-        })
-
-      }*/
-    },
+    middleware: 'notAuth',
     components: {
       FavoritesComponent: ()=> import ('../components/common/favoritesComponent')
     }
