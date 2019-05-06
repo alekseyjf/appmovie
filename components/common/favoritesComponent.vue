@@ -43,12 +43,7 @@
     },
     methods: {
       removeFavorite() {
-        for(let i=0; i < this.$store.getters.retFavoritesList.length; i++) {
-          if(this.$store.getters.retFavoritesList[i].id == this.filmId) {
-            this.$store.dispatch('removeFavorite', i);
-            return
-          }
-        }
+        this.$emit('allowOnRemove', this.filmId);
       }
     }
   }

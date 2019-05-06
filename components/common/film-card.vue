@@ -48,6 +48,7 @@
     },
     methods: {
       addFavorite() {
+
         this.$store.dispatch('setFavorite', this.filmId);
         this.flag = !this.flag;
       },
